@@ -1,8 +1,6 @@
 ﻿using CardTemplateGenerator.Filters;
 using MaterialDesignThemes.Wpf;
 using System;
-using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Documents;
@@ -77,19 +75,6 @@ namespace CardTemplateGenerator.Templates
 				else
 				{
 					CardDescription.Inlines.Add(part + " ");
-				}
-			}
-		}
-
-		public void GenerateCardImage()
-		{
-			using (var bmp = new Bitmap((int)this.Width, (int)this.Height))
-			{
-				using (var g = Graphics.FromImage(bmp))
-				{
-					var fileName = "Card" + DateTime.Now.ToString("ddMM HHmm") + ".png";
-					g.CopyFromScreen((int)this.Left, (int)this.Top, 0, 0, bmp.Size);
-					bmp.Save(Directory.GetCurrentDirectory() + fileName);
 				}
 			}
 		}
