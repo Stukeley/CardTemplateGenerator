@@ -1,6 +1,8 @@
 ﻿using CardTemplateGenerator.Filters;
 using MaterialDesignThemes.Wpf;
 using System;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Documents;
@@ -20,6 +22,15 @@ namespace CardTemplateGenerator.Templates
 
 			CardCostText.Text = cost;
 
+			if (attack.Length < 3)
+			{
+				CardAttack.Width = 80;
+			}
+			else
+			{
+				CardAttack.Width = 100;
+			}
+
 			CardAttackText.Text = attack;
 
 			DamageTypeIcon.Kind = damageType;
@@ -30,7 +41,6 @@ namespace CardTemplateGenerator.Templates
 			}
 
 			// TODO: rescale to fit
-			// TODO: Keywords
 		}
 
 		private void CheckKeywords(string description)
@@ -67,6 +77,19 @@ namespace CardTemplateGenerator.Templates
 				else
 				{
 					CardDescription.Inlines.Add(part + " ");
+				}
+			}
+		}
+
+		public void GenerateCardImage()
+		{
+			using (var bmp = new Bitmap((int)this.Width, (int)this.Height))
+			{
+				using (var g = Graphics.FromImage(bmp))
+				{
+					var fileName = "Card" + DateTime.Now.ToString("ddMM HHmm") + ".png";
+					g.CopyFromScreen((int)this.Left, (int)this.Top, 0, 0, bmp.Size);
+					bmp.Save(Directory.GetCurrentDirectory() + fileName);
 				}
 			}
 		}

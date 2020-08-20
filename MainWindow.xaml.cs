@@ -2,6 +2,7 @@
 using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace CardTemplateGenerator
 {
@@ -23,12 +24,22 @@ namespace CardTemplateGenerator
 
 		private void GenerateButton_Click(object sender, RoutedEventArgs e)
 		{
+			var card = GenerateCard();
 
+			card.WindowStyle = WindowStyle.None;
+
+			card.Show();
+
+			card.Focus();
+
+			card.GenerateCardImage();
 		}
 
 		private BaseTemplate GenerateCard()
 		{
-			var damageType = CardDamageTypeBox.SelectedItem switch
+			var item = ((ComboBoxItem)CardDamageTypeBox.SelectedItem).Content.ToString();
+
+			var damageType = item switch
 			{
 				"Physical" => PackIconKind.Sword,
 				"Fire" => PackIconKind.Fire,

@@ -26,9 +26,10 @@
 		<Grid Grid.Row="0">
 			<Border x:Name="TopBorder" BorderBrush="{StaticResource BorderBrush}" BorderThickness="5" CornerRadius="12 12 0 0" Background="{StaticResource BackgroundBrush}">
 				<Grid>
-					<Image x:Name="CardImage" Source="\Resources\sample.png" Margin="0,55,0,0">
-
+					<Image x:Name="CardImage" Source="\Resources\sample.png" Margin="0,55,0,0" Height="125" Width="290">
+						<!-- Image Size is 290x125 -->
 					</Image>
+					
 					<Grid x:Name="CardCost" Width="60" Height="60" VerticalAlignment="Top" HorizontalAlignment="Left">
 						<materialDesign:PackIcon Kind="Hexagon" Foreground="{StaticResource SecondaryBackgroundBrush}" Width="60" Height="60"/>
 						<TextBlock x:Name="CardCostText" Text="8" Foreground="{StaticResource SecondaryTextBrush}" FontSize="32" Width="60" Height="60" TextAlignment="Center"
@@ -36,10 +37,10 @@
 							   />
 					</Grid>
 					<Grid x:Name="CardName" Width="200" Height="60" Margin="60,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Center">
-						<Viewbox Stretch="Fill" Height="60" MaxWidth="200" VerticalAlignment="Top">
+						<Viewbox Stretch="Fill" Height="60" MaxWidth="200" VerticalAlignment="Top" StretchDirection="DownOnly">
 							<TextBlock x:Name="CardNameText" Text="Bubuś, The Destroyer" Foreground="{StaticResource TextBrush}" FontSize="20" Padding="2,15,2,15"
-								   Background="Transparent" Width="200" MaxWidth="200" TextWrapping="NoWrap" TextTrimming="None" TextAlignment="Center"
-								   FontWeight="DemiBold"/>
+								   Background="Transparent" Width="{Binding ActualWidth}"
+								   TextWrapping="NoWrap" TextTrimming="None" TextAlignment="Center" FontWeight="DemiBold"/>
 						</Viewbox>
 					</Grid>
 				</Grid>
@@ -50,17 +51,20 @@
 		<Grid Grid.Row="1">
 			<Border x:Name="BottomBorder" BorderBrush="{StaticResource BorderBrush}" BorderThickness="5" CornerRadius="0 0 12 12" Background="{StaticResource BackgroundBrush}">
 				<Grid>
-					<Viewbox Height="120" Stretch="Uniform" VerticalAlignment="Top">
+					<Viewbox Height="120" Stretch="Uniform" VerticalAlignment="Top" StretchDirection="DownOnly">
 						<TextBlock x:Name="CardDescription" FontSize="18" TextWrapping="Wrap" TextAlignment="Justify" Padding="5" Foreground="{StaticResource TextBrush}"
 							   Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi efficitur, diam ac vulputate vestibulum, neque."
-								   Width="290"/>
+								   Width="290" Height="{Binding ActualHeight}"/>
 					</Viewbox>
-					
-					<StackPanel x:Name="CardAttack" Height="60" VerticalAlignment="Bottom" Orientation="Horizontal" HorizontalAlignment="Center">
+
+					<Separator Height="1" VerticalAlignment="Bottom" Margin="0,0,0,60"/>
+
+					<StackPanel x:Name="CardAttack" Height="60" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="100"
+						Orientation="Horizontal" Margin="0">
 						<materialDesign:PackIcon x:Name="DamageTypeIcon" Kind="Sword" Width="40" Height="40" Foreground="{StaticResource AccentBrush}"
-												 HorizontalAlignment="Left" VerticalAlignment="Center"/>
-						<TextBlock x:Name="CardAttackText" Text="15" FontSize="32" Width="40" Height="40" FontWeight="DemiBold"
-								   Padding="5,2"/>
+											HorizontalAlignment="Center" VerticalAlignment="Center"/>
+						<TextBlock x:Name="CardAttackText" Text="155" FontSize="32" Width="60" Height="40" FontWeight="DemiBold"
+							Padding="5,2" HorizontalAlignment="Center"/>
 					</StackPanel>
 				</Grid>
 			</Border>

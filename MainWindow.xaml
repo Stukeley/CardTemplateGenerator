@@ -21,10 +21,10 @@
 					 Width="840" FontSize="20"/>
 			
 			<TextBox x:Name="CardCostBox" materialDesign:HintAssist.Hint="COST" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30,80,0,0"
-					 Width="100" FontSize="20"/>
+					 Width="80" FontSize="20"/>
 			
 			<TextBox x:Name="CardAttackBox" materialDesign:HintAssist.Hint="ATTACK" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,80,0,0"
-					 Width="100" FontSize="20"/>
+					 Width="80" FontSize="20"/>
 
 			<ComboBox x:Name="CardDamageTypeBox" IsEditable="False" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,80,30,0" FontSize="20">
 				<ComboBoxItem Content="Damage type" IsSelected="True"/>
@@ -40,8 +40,8 @@
 		</Grid>
 
 		<Grid Grid.Row="1">
-			<TextBlock Text="Card colours" FontWeight="DemiBold" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5"/>
-			<Button x:Name="SelectImageButton" Content="Choose card image" Width="160" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,50"
+			<TextBlock Text="Card appearance" FontWeight="DemiBold" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5"/>
+			<Button x:Name="SelectImageButton" Content="Choose card image (290x125)" Width="240" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,50"
 					Click="SelectImageButton_Click"/>
 		</Grid>
 
